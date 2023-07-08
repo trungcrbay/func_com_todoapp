@@ -20,10 +20,11 @@ const AddTodo = (props) => {
 
         let todo = {
             id:Math.floor(Math.random() * 1001),
-            title:title
+            title // sẽ không hiện todo mới khi không có giá trị 
         }    
         // setListTodo([...listTodo,todo])
         addNewTodo(todo);
+        setTitle('');
 
     }
 
