@@ -6,32 +6,28 @@ const AddTodo = (props) => {
 
     const {listTodo, setListTodo, addNewTodo} = useContext(Context);
     const [title,setTitle] = useState('');
-
     const handleOnChangeTitle = (e) => {
         setTitle(e.target.value) //lấy giá trị nhập từ bàn phím
     } 
 
-    const handleAddTodo = () => {
+    const addNewUser = (user) => {
         if(!title){
-            //undefined , empty , null 
-            toast.error('Missing a title')
-            return; //không trả ra cái gì
+            toast.error('Missing title!')
+            return;
         }
-
-        let todo = {
+        const newUSer = {
             id:Math.floor(Math.random() * 1001),
-            title // sẽ không hiện todo mới khi không có giá trị 
-        }    
-        // setListTodo([...listTodo,todo])
-        addNewTodo(todo);
-        setTitle('');
+            title:title
+        }
+        setListTodo([...listTodo,newUSer])
+        setTitle('')
 
     }
 
     return (
         <div className="add-todo">
             <input type="text" value={title} onChange={(e) => handleOnChangeTitle(e)}/>
-            <button type="button" onClick={handleAddTodo}>Add</button>
+            <button type="button" onClick={() => addNewUser(title)}>Add</button>
         </div>
     )
 }
